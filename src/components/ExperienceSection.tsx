@@ -8,16 +8,16 @@ const experiences = [
     period: "July 2025 - February 2026",
     description:
       `- Handled 1,067 inbound calls across domestic and international support both
-voice and non-voice 
-achieving a 91.17% Q6 CSAT with resolution, based on surveyed customer
-feedback as a 
-Customer Service Advisor on a travel account.`,
+      voice and non-voice 
+      achieving a 91.17% Q6 CSAT with resolution, based on surveyed customer
+      feedback as a 
+      Customer Service Advisor on a travel account.`,
     technologies: ["Empathy", "Soft Skills", "Language Frameworks", "Problem Solving"],
   },
     {
     title: "Associate Project Lead",
     company: "RTU Boni Campus - MISO",
-    period: "March 2025 - May 2026",
+    period: "March 2025 - May 2025",
     description:
       `- Created and deployed a queuing system in a short span of time by ensuring tasks were delegated using JIRA and is prioritized based on level or urgency and importance. \n\n`,
     technologies: ["JIRA", "Trello", "Eisenhower Matrix", "STAR Method"],
