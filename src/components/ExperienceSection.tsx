@@ -26,7 +26,7 @@ Customer Service Advisor on a travel account.`,
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 px-6 bg-muted/30">
+    <section id="experience" className="py-32 px-12 bg-muted/30">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
