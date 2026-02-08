@@ -20,6 +20,8 @@ export default function HeroSection() {
   // Role rotation logic
   const roles = ["DEVELOPER", "DESIGNER", "AGENT", "EDITOR"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const rolesDesc = ["I help people build their porfolio without overly charging them.", "I help clients create their own brand kit without", "I help customers resolve their problems and issues without letting the conversation quality detriment.", "I help actors and actresses shine in a video without compromising production value."]
+  const [currentRoleDesc, setCurrentRoleDesc] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,6 +29,13 @@ export default function HeroSection() {
     }, 3000); // Change role every 3 seconds
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const descInterval = setInterval(() => {
+      setCurrentRoleDesc((prevIndex) => (prevIndex + 1) % rolesDesc.length);
+    }, 3000); // Change description every 3 seconds
+      return () => clearInterval(descInterval);
   }, []);
 
   return (
@@ -45,6 +54,8 @@ export default function HeroSection() {
                   >
                     CREATIVE
                     <br />
+
+                    {/* Title */}
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={{currentRoleIndex}}
@@ -60,15 +71,20 @@ export default function HeroSection() {
                   </h1>
                 </div>
               </div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="relative z-20 mt-10 font-mono text-sm text-muted-foreground md:text-base"
-              >
-                I help people build their ideas into reality, whether it's a personal or business website. I can also help you build and create your logo and branding kits with my expertise on graphic design. I can even solve your business' problems with my experience in customer support! 
-              </motion.p>
+              
+              {/* Description */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={{currentRoleDesc}}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="relative z-20 mt-10 font-mono text-sm text-muted-foreground md:text-base"
+                >
+                  {rolesDesc[currentRoleDesc]}
+                </motion.p>
+              </AnimatePresence>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -40,7 +40,7 @@ const projects = [
 export default function ProjectsSection() {
   return (
     <div className="relative">
-      <Spotlight/>
+      
       <section id="projects" className="py-24 px-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
