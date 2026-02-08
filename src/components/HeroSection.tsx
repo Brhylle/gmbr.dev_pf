@@ -18,7 +18,7 @@ export default function HeroSection() {
   }, []);
 
   // Role rotation logic
-  const roles = ["DEVELOPER", "DESIGNER", "AGENT"];
+  const roles = ["DEVELOPER", "DESIGNER", "AGENT", "EDITOR"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function HeroSection() {
                 transition={{ duration: 1, delay: 0.5 }}
                 className="relative z-20 mt-10 font-mono text-sm text-muted-foreground md:text-base"
               >
-                Crafting digital experiences with clean code & thoughtful design
+                I help people build their ideas into reality, whether it's a personal or business website. I can also help you build and create your logo and branding kits with my expertise on graphic design. I can even solve your business' problems with my experience in customer support! 
               </motion.p>
 
               <motion.div
@@ -83,7 +83,7 @@ export default function HeroSection() {
                   View Projects
                 </a>
                 <a
-                  href="/resume.pdf"
+                  href="/projects/Dela_Cruz_Jheizon_Brhylle_Resume.pdf"
                   download
                   className="rounded-md border border-foreground/30 px-6 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground/5"
                 >

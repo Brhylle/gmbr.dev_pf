@@ -40,7 +40,7 @@ const projects = [
 export default function ProjectsSection() {
   return (
     <div className="relative">
-       <Spotlight/>
+      <Spotlight/>
       <section id="projects" className="py-24 px-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
@@ -52,8 +52,8 @@ export default function ProjectsSection() {
             >
             
             <h2 className="text-4xl font-bold md:text-5xl">Featured Projects</h2>
-            <p className="mt-4 text-muted-foreground">
-              I can help you create your projects from ground-up! Just like these creations crafted with care.
+            <p className="mt-4 text-muted-foreground text-[1rem] max-w-2xl mx-auto">
+              I can help you create your projects from ground-up! Just like these creations crafted with care. Without me, you won't be fixing bugs and solving real-world problems on-time.
             </p>
           </motion.div>
           
@@ -120,13 +120,8 @@ export default function ProjectsSection() {
               </motion.div>
             ))}
           </div>
-
-          
         </div>
-
-        
     </section>
     </div>
-
   );
 }
