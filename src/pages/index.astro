@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import HeroSection from '../components/HeroSection';
+import ExperienceSection from '../components/ExperienceSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ContactSection from '../components/ContactSection';
+import FooterSection from '@/components/FooterSection';
+import { imageConfig } from 'astro:assets';
+---
+
+<Layout>
+  <Navbar client:load />
+  <main>
+    <HeroSection client:load />
+    <ExperienceSection client:visible />
+    <ProjectsSection client:visible />
+    <ContactSection client:visible />
+    <FooterSection client:load />
+  </main>
+</Layout>
