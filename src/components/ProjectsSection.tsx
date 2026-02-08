@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { DottedGlowBackground } from "./ui/dotted-glow-background";
 import { Spotlight } from "./ui/spotlight-new";
 import { Github, ExternalLink } from "lucide-react"; // Import icons
 

@@ -37,7 +37,7 @@ export default function ExperienceSection() {
         >
           <h2 className="text-4xl font-bold md:text-5xl">Work Experience</h2>
           <p className="mt-4 text-muted-foreground">
-            I have helped a variety of customers, users and even colleagues in a professional industry!
+            I have helped a variety of customers, users and even colleagues in a professional industry, may it be <b>virtually</b> or <b>in-person</b>!
           </p>
         </motion.div>
         
