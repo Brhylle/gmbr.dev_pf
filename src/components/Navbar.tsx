@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <a href="#hero" className="text-xl font-bold">
-            <img src="/public/projects/tmb_gmbrlogo_transparent.png" alt="gmbr.dev logo" className="h-8 w-8" />
+            <img src="/projects/tmb_gmbrlogo_transparent.png" alt="gmbr.dev logo" className="h-8 w-8" />
           </a>
 
           {/* Desktop Navigation */}
