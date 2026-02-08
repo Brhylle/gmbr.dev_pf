@@ -1,6 +1,6 @@
-# Astro Portfolio with Globe
+# gmbr.dev here, thanks for visiting the GitHub repository!
 
-A modern, minimalist portfolio built with Astro.js, Bun, TypeScript, and TailwindCSS featuring an interactive 3D globe.
+A modern and minimalistic website crafted with love <3
 
 ## 🚀 Tech Stack
 
