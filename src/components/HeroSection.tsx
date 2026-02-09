@@ -20,7 +20,7 @@ export default function HeroSection() {
   // Role rotation logic
   const roles = ["DEVELOPER", "DESIGNER", "AGENT", "EDITOR"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const rolesDesc = ["I help people build their porfolio without overly charging them.", "I help clients create their own brand kit without", "I help customers resolve their problems and issues without letting the conversation quality detriment.", "I help actors and actresses shine in a video without compromising production value."]
+  const rolesDesc = ["I help people build their porfolio without overly charging them.", "I help clients create their own brand kit without cutting corners—by building on strong design fundamentals and consistently exceeding expectations.", "I help customers resolve their problems and issues without letting the conversation quality detriment.", "I help actors and actresses shine in a video without compromising production value."]
   const [currentRoleDesc, setCurrentRoleDesc] = useState(0);
 
   useEffect(() => {

@@ -11,7 +11,7 @@ const experiences = [
       voice and non-voice 
       achieving a 91.17% Q6 CSAT with resolution, based on surveyed customer
       feedback as a 
-      Customer Service Advisor on a travel account.`,
+      Customer Service Advisor on a travel account. \n - Out of 25 colleagues who've asked for help with their network issues, I was able to troubleshoot and resolve 23 of them, resulting in a 92% success rate in providing effective solutions and ensuring uninterrupted connectivity for my colleagues.`,
     technologies: ["Empathy", "Soft Skills", "Language Frameworks", "Problem Solving"],
   },
     {
