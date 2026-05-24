@@ -104,7 +104,7 @@ export default function ContactSection() {
                 </motion.a>
                 
                 <motion.a
-                  href="https://viber.me/09939270175"
+                  href="https://viber.me/09242455458"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-foreground text-2xl"
@@ -116,6 +116,21 @@ export default function ContactSection() {
                   whileTap={{ scale: 0.9 }}
                 >
                   <i className="fa-brands fa-viber"></i>
+                </motion.a>
+
+                <motion.a
+                  href="https://wa.me/09242455458"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground text-2xl"
+                  whileHover={{ 
+                    scale: 1.2, 
+                    rotate: [0, -10, 10, -10, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <i className="fa-brands fa-whatsapp"></i>
                 </motion.a>
                 
                 <motion.a
