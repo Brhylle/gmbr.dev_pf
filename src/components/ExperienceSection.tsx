@@ -2,10 +2,18 @@ import { motion } from "motion/react";
 import { DottedGlowBackground } from "./ui/dotted-glow-background";
 
 const experiences = [
+    {
+    title: "Customer Service Representative",
+    company: "IntouchCX",
+    period: "February 2026 - Present",
+    description:
+      `- I handled over 2,100 customer interactions while maintaining a 94% first-call resolution rate, a 4.75 customer satisfaction score, a 4.7 ease-of-handling rating, and an average handling time of 491 seconds during mentorship with supervisor. \n - Out of 25 colleagues who've asked for help with their network issues, I was able to troubleshoot and resolve 23 of them, resulting in a 92% success rate in providing effective solutions and ensuring uninterrupted connectivity for my colleagues.`,
+    technologies: ["Appointment Scheduling", "MS-DOS Based System", "Keyboard Navigation"],
+  },
   {
     title: "Customer Service Advisor",
     company: "Concentrix CVG",
-    period: "July 2025 - February 2026",
+    period: "July 2024 - February 2026",
     description:
       `- Handled 1,067 inbound calls across domestic and international support both
       voice and non-voice 
