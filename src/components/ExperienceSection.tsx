@@ -15,7 +15,7 @@ const experiences = [
     company: "Concentrix CVG",
     period: "July 2024 - February 2026",
     description:
-      `- Handled 1,067 inbound calls across domestic and international support both
+      `- Handled 5,067 inbound calls across domestic and international support both
       voice and non-voice 
       achieving a 91.17% Q6 CSAT with resolution, based on surveyed customer
       feedback as a 
