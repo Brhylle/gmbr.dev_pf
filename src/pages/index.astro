@@ -6,6 +6,7 @@ import ExperienceSection from '../components/ExperienceSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import FooterSection from '@/components/FooterSection';
+import JheiChat from '../components/JheiChat';
 import { imageConfig } from 'astro:assets';
 ---
 
@@ -18,4 +19,5 @@ import { imageConfig } from 'astro:assets';
     <ContactSection client:visible />
     <FooterSection client:load />
   </main>
+  <JheiChat client:load />
 </Layout>
