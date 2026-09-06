@@ -13,6 +13,10 @@ export interface ResumeKnowledge {
   preferredName: string;
   location: string;
   professionalSummary: string;
+  resumeFile: {
+    url: string;
+    fileName: string;
+  };
   contact: {
     email: string;
     github?: string;
@@ -61,6 +65,10 @@ export const RESUME_KNOWLEDGE: ResumeKnowledge = {
   location: "Rizal, Philippines",
   professionalSummary:
     "Software engineer, machine learning practitioner, and customer service specialist with a strong foundation in computer science, computer vision, web engineering, and enterprise customer operations. Experienced in leading development teams, architecting machine learning pipelines (YOLOv8-v10), building dynamic responsive web applications, and delivering high-satisfaction client support.",
+  resumeFile: {
+    url: "/projects/Dela_Cruz_Jheizon_Brhylle_Resume.pdf",
+    fileName: "Dela_Cruz_Jheizon_Brhylle_Resume.pdf",
+  },
   contact: {
     email: "emperador.jheizonbrhylle@gmail.com",
     github: "https://github.com/Brhylle",
@@ -216,6 +224,10 @@ export const RESUME_KNOWLEDGE: ResumeKnowledge = {
       question: "How can I contact you?",
       answer: "You can email me at emperador.jheizonbrhylle@gmail.com, or reach out on LinkedIn (linkedin.com/in/delacruzjheizonbrhylle) or GitHub (github.com/Brhylle).",
     },
+    {
+      question: "Can I download or view your resume?",
+      answer: "Yes! You can view or download Jheizon's official resume here: [Download Resume (PDF)](/projects/Dela_Cruz_Jheizon_Brhylle_Resume.pdf)",
+    },
   ],
 };
 
@@ -228,6 +240,7 @@ export function getGroundedResumeContext(): string {
     preferredName,
     location,
     professionalSummary,
+    resumeFile,
     contact,
     education,
     workExperience,
@@ -241,6 +254,10 @@ export function getGroundedResumeContext(): string {
 NAME: ${name} (Goes by ${preferredName})
 LOCATION: ${location}
 SUMMARY: ${professionalSummary}
+
+OFFICIAL RESUME ATTACHMENT:
+- File Name: ${resumeFile.fileName}
+- Download Link: [Download Resume (PDF)](${resumeFile.url})
 
 CONTACT & LINKS:
 - Email: ${contact.email}

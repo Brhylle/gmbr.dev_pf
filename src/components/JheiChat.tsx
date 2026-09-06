@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Sparkles, RotateCcw, Bot, ShieldCheck, AlertCircle } from 'lucide-react';
+import { X, Send, Sparkles, RotateCcw, Bot, ShieldCheck, AlertCircle, FileText, Download, ExternalLink } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -10,9 +10,9 @@ interface Message {
 }
 
 const STARTER_PROMPTS = [
+  'Can I download your resume?',
   'Who is Jhei?',
   'What is your primary tech stack?',
-  'Tell me about your work experience',
   'Where are you based and how do I contact you?',
 ];
 
@@ -106,38 +106,172 @@ export default function JheiChat() {
       {
         id: 'welcome',
         role: 'assistant',
-        text: "Conversation reset! 👋 What would you like to know about Jheizon's portfolio?",
+        text: "Hi!👋 What would you like to know about Jheizon?",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       },
     ]);
     setErrorMessage(null);
   };
 
-  // Simple Markdown parser for bold, lists, and line breaks
+  // Robust Markdown parser for bold, lists, links, and line breaks
   const renderFormattedText = (text: string) => {
+    const formatInline = (str: string) => {
+      // Split by markdown link pattern [label](url)
+      const linkParts = str.split(/(\[[^\]]+\]\([^)]+\))/g);
+      return linkParts.map((lPart, lIdx) => {
+        const linkMatch = lPart.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (linkMatch) {
+          const url = linkMatch[2];
+          const label = linkMatch[1];
+          const isPdfDocument = url.endsWith('.pdf') || url.includes('Resume.pdf');
+
+          if (isPdfDocument) {
+            return (
+              <div
+                key={`file-card-${lIdx}`}
+                className="my-3 rounded-xl border border-white/15 bg-zinc-950/80 p-3.5 shadow-xl backdrop-blur-md not-prose"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-500/15 text-red-400 border border-red-500/25">
+                      <FileText className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-xs font-semibold text-white tracking-tight truncate">
+                          Dela_Cruz_Resume.pdf
+                        </span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono flex items-center gap-0.5">
+                          <ShieldCheck className="w-2.5 h-2.5" /> Verified Document
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-zinc-400 mt-0.5">PDF • Official Resume • 182 KB</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center gap-2 pt-2.5 border-t border-white/10">
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-zinc-200 hover:text-white border border-white/10 transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                    <span>View PDF</span>
+                  </a>
+                  <a
+                    href={url}
+                    download="Dela_Cruz_Jheizon_Brhylle_Resume.pdf"
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs text-white font-medium shadow-md transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <a
+              key={`link-${lIdx}`}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors font-medium break-all"
+            >
+              {label}
+            </a>
+          );
+        }
+
+        // Format bold **text**
+        return lPart.split(/(\*\*.*?\*\*)/g).map((part, pIdx) => {
+          if (part.startsWith('**') && part.endsWith('**')) {
+            return (
+              <strong key={`b-${pIdx}`} className="font-semibold text-white">
+                {part.slice(2, -2)}
+              </strong>
+            );
+          }
+          return part;
+        });
+      });
+    };
+
     const lines = text.split('\n');
     return lines.map((line, idx) => {
-      // Bold syntax **text**
-      const formattedParts = line.split(/(\*\*.*?\*\*)/g).map((part, pIdx) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={pIdx} className="font-semibold text-white">{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      });
+      const trimmed = line.trim();
+      if (!trimmed) {
+        return <div key={idx} className="h-1.5" />;
+      }
 
-      if (line.trim().startsWith('- ') || line.trim().startsWith('• ')) {
+      // If the line contains the PDF resume link, render dedicated file card directly
+      const pdfMatch = trimmed.match(/\[([^\]]+)\]\(([^)]+\.pdf)\)/i);
+      if (pdfMatch) {
+        const url = pdfMatch[2];
+        return (
+          <div
+            key={`file-card-${idx}`}
+            className="my-3 rounded-xl border border-white/15 bg-zinc-950/90 p-3.5 shadow-xl backdrop-blur-md"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-500/15 text-red-400 border border-red-500/25">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-xs font-semibold text-white tracking-tight truncate">
+                      Dela_Cruz_Resume.pdf
+                    </span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono flex items-center gap-0.5">
+                      <ShieldCheck className="w-2.5 h-2.5" /> Verified Document
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-zinc-400 mt-0.5">PDF • Official Resume • 182 KB</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-3 flex items-center gap-2 pt-2.5 border-t border-white/10">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-zinc-200 hover:text-white border border-white/10 transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                <span>View PDF</span>
+              </a>
+              <a
+                href={url}
+                download="Dela_Cruz_Jheizon_Brhylle_Resume.pdf"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs text-white font-medium shadow-md transition-colors"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download</span>
+              </a>
+            </div>
+          </div>
+        );
+      }
+
+      const isBullet = trimmed.startsWith('- ') || trimmed.startsWith('• ') || trimmed.startsWith('* ');
+      const content = isBullet ? trimmed.replace(/^[-•*]\s+/, '') : line;
+
+      if (isBullet) {
         return (
           <div key={idx} className="flex items-start space-x-2 my-1 pl-1">
-            <span className="text-emerald-400 mt-1 text-xs">•</span>
-            <span className="flex-1">{formattedParts.slice(1)}</span>
+            <span className="text-emerald-400 mt-1 text-xs leading-none">•</span>
+            <span className="flex-1 text-zinc-200">{formatInline(content)}</span>
           </div>
         );
       }
 
       return (
-        <p key={idx} className={idx > 0 ? 'mt-2' : ''}>
-          {formattedParts}
-        </p>
+        <div key={idx} className={idx > 0 ? 'mt-2 text-zinc-200 leading-relaxed' : 'text-zinc-200 leading-relaxed'}>
+          {formatInline(content)}
+        </div>
       );
     });
   };
@@ -238,11 +372,10 @@ export default function JheiChat() {
                   className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed shadow-sm ${
-                      msg.role === 'user'
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed shadow-sm ${msg.role === 'user'
                         ? 'bg-emerald-600 text-white rounded-br-none'
                         : 'bg-zinc-900/80 text-zinc-200 border border-white/10 rounded-bl-none'
-                    }`}
+                      }`}
                   >
                     {renderFormattedText(msg.text)}
                   </div>

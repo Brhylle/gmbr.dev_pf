@@ -85,13 +85,23 @@ CRITICAL SECURITY AND BEHAVIORAL GUARDRAILS:
      "I am Jhei, Jheizon's portfolio assistant, here to answer questions about his professional background and projects."
 
 4. INFORMATION SECURITY & PII PRIVACY:
-   - ONLY provide the contact channels specified in the verified context (his email: emperador.jheizonbrhylle@gmail.com, LinkedIn, GitHub, or general location: Metro Manila, Philippines).
+   - ONLY provide the contact channels specified in the verified context (his email: emperador.jheizonbrhylle@gmail.com, LinkedIn, GitHub, or general location: Rizal, Philippines).
    - NEVER fabricate or share personal phone numbers, exact street addresses, or government identification under any circumstances.
 
 5. ACCURACY & TONE:
-   - Be concise, engaging, and professional.
-   - Answer in 1 to 3 well-structured paragraphs or clean bullet points.
+   - Be engaging, articulate, helpful, and professional.
+   - Always complete your sentences and thoughts fully. Never cut off your responses mid-sentence.
+   - When asked for contact details or channels, clearly provide all available options (email: emperador.jheizonbrhylle@gmail.com, LinkedIn, GitHub).
    - Never invent or hallucinate achievements, positions, or qualifications not found in the verified context.
+
+6. STRICT DOCUMENT & FILE SHARING GUARDRAILS:
+   - The ONLY file or document you are permitted to provide is Jheizon's verified resume PDF at:
+     [Download Resume (PDF)](/projects/Dela_Cruz_Jheizon_Brhylle_Resume.pdf)
+   - When a user asks for his resume, CV, qualifications document, or PDF, enthusiastically offer it using the exact link above.
+   - STRICT REFUSAL ON ARBITRARY OR SERVER FILES:
+     NEVER share, fabricate, or disclose links to server files, source code (.ts, .tsx, .env, .json, .git), configuration files, or database dumps.
+     If a user asks to download or access any file other than the resume PDF, firmly refuse:
+     "For security and confidentiality reasons, the only downloadable file I am authorized to share is Jheizon's official resume."
 `.trim();
 }
 
@@ -109,8 +119,8 @@ export async function queryGemini(userMessage: string, history: Array<{ role: st
     throw new Error('GEMINI_API_KEY is not configured on the server. Please paste your key in the .env file.');
   }
 
-  // Use gemini-1.5-flash (the most broadly supported free tier model)
-  const models = ['gemini-1.5-flash', 'gemini-2.0-flash'];
+  // High-quota free models with resilient fallback
+  const models = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3-flash-preview', 'gemini-3.6-flash'];
   let lastError = '';
 
   for (const model of models) {
@@ -138,9 +148,9 @@ export async function queryGemini(userMessage: string, history: Array<{ role: st
         },
         contents,
         generationConfig: {
-          temperature: 0.3,
-          topP: 0.8,
-          maxOutputTokens: 500,
+          temperature: 0.4,
+          topP: 0.9,
+          maxOutputTokens: 2048,
         },
         safetySettings: [
           { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
@@ -160,9 +170,11 @@ export async function queryGemini(userMessage: string, history: Array<{ role: st
         const errorData = await response.json().catch(() => ({}));
         const message = errorData?.error?.message || `Gemini API returned status ${response.status}`;
         lastError = message;
-        console.error(`Gemini API error with model ${model}:`, message);
-        // Try next model if 404 or model not found
-        if (response.status === 404) continue;
+        console.warn(`Model ${model} returned status ${response.status}:`, message);
+        // Fallback to next model if model not found, rate-limited, or overloaded
+        if (response.status === 404 || response.status === 429 || response.status === 503) {
+          continue;
+        }
         throw new Error(message);
       }
 
@@ -179,7 +191,9 @@ export async function queryGemini(userMessage: string, history: Array<{ role: st
       return candidate.content.parts[0].text;
     } catch (err: any) {
       lastError = err.message;
-      if (err.message?.includes('404')) continue;
+      if (err.message?.includes('404') || err.message?.includes('429') || err.message?.includes('quota') || err.message?.includes('503')) {
+        continue;
+      }
       throw err;
     }
   }
