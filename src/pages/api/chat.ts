@@ -60,10 +60,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   } catch (error: any) {
     console.error('Error in /api/chat:', error);
 
-    // Provide friendly response if API key is missing or quota exceeded
-    let errorMessage = 'An error occurred while processing your request. Please try again later.';
-    if (error?.message?.includes('GEMINI_API_KEY')) {
-      errorMessage = 'The chat assistant is temporarily offline (API key setup required).';
+    // Provide friendly, descriptive response based on error type
+    let errorMessage = error?.message || 'An error occurred while processing your request. Please try again later.';
+    if (error?.message?.includes('GEMINI_API_KEY') || error?.message?.includes('.env')) {
+      errorMessage = 'The chat assistant is temporarily offline (API key setup required in .env).';
+    } else if (error?.message?.includes('401') || error?.message?.includes('UNAUTHENTICATED') || error?.message?.includes('invalid authentication')) {
+      errorMessage = 'Invalid Gemini API key. Google AI Studio keys start with "AIzaSy...". Please verify your key at https://aistudio.google.com/app/apikey.';
     } else if (error?.message?.includes('429') || error?.message?.includes('quota')) {
       errorMessage = 'Free tier quota reached for the moment. Please try again shortly!';
     }
