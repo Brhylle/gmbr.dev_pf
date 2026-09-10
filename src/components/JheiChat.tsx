@@ -373,7 +373,7 @@ export default function JheiChat() {
                 >
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed shadow-sm ${msg.role === 'user'
-                      ? 'bg-red-600 text-white rounded-br-none'
+                      ? 'bg-mist-100 text-white rounded-br-none'
                       : 'bg-zinc-900/80 text-zinc-200 border border-white/10 rounded-bl-none'
                       }`}
                   >
