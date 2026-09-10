@@ -141,7 +141,7 @@ export default function JheiChat() {
                         <span className="text-xs font-semibold text-white tracking-tight truncate">
                           Dela_Cruz_Resume.pdf
                         </span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-lime-500/20 text-lime-300 font-mono flex items-center gap-0.5">
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-500/20 text-red-300 font-mono flex items-center gap-0.5">
                           <ShieldCheck className="w-2.5 h-2.5" /> Verified Document
                         </span>
                       </div>
@@ -162,7 +162,7 @@ export default function JheiChat() {
                   <a
                     href={url}
                     download="Dela_Cruz_Jheizon_Brhylle_Resume.pdf"
-                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-lime-600 hover:bg-lime-500 text-xs text-white font-medium shadow-md transition-colors"
+                    className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-red-600 hover:bg-red-500 text-xs text-white font-medium shadow-md transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download</span>
@@ -178,7 +178,7 @@ export default function JheiChat() {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lime-400 hover:text-lime-300 underline underline-offset-2 transition-colors font-medium break-all"
+              className="text-red-400 hover:text-red-300 underline underline-offset-2 transition-colors font-medium break-all"
             >
               {label}
             </a>
@@ -225,7 +225,7 @@ export default function JheiChat() {
                     <span className="text-xs font-semibold text-white tracking-tight truncate">
                       Dela_Cruz_Resume.pdf
                     </span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-lime-500/20 text-lime-300 font-mono flex items-center gap-0.5">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-red-500/20 text-red-300 font-mono flex items-center gap-0.5">
                       <ShieldCheck className="w-2.5 h-2.5" /> Verified Document
                     </span>
                   </div>
@@ -246,7 +246,7 @@ export default function JheiChat() {
               <a
                 href={url}
                 download="Dela_Cruz_Jheizon_Brhylle_Resume.pdf"
-                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-lime-600 hover:bg-lime-500 text-xs text-white font-medium shadow-md transition-colors"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-red-600 hover:bg-red-500 text-xs text-white font-medium shadow-md transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download</span>
@@ -262,7 +262,7 @@ export default function JheiChat() {
       if (isBullet) {
         return (
           <div key={idx} className="flex items-start space-x-2 my-1 pl-1">
-            <span className="text-lime-400 mt-1 text-xs leading-none">•</span>
+            <span className="text-red-400 mt-1 text-xs leading-none">•</span>
             <span className="flex-1 text-zinc-200">{formatInline(content)}</span>
           </div>
         );
@@ -290,17 +290,17 @@ export default function JheiChat() {
             >
               {/* Online Pulse Indicator */}
               <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-lime-500 border-2 border-zinc-950"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500 border-2 border-zinc-950"></span>
               </span>
 
               <button
                 id="jhei-chat-toggle-btn"
                 onClick={() => setIsOpen(true)}
-                className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-zinc-900/90 text-white border border-white/20 shadow-xl backdrop-blur-lg hover:border-lime-400/50 hover:bg-zinc-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-lime-400/50"
+                className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-zinc-900/90 text-white border border-white/20 shadow-xl backdrop-blur-lg hover:border-red-400/50 hover:bg-zinc-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400/50"
                 aria-label="Open Jhei AI Assistant"
               >
-                <div className="p-1 rounded-full bg-lime-500/20 text-lime-400">
+                <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <span className="text-sm font-medium tracking-wide">Ask Jhei</span>
@@ -324,15 +324,15 @@ export default function JheiChat() {
             <div className="px-4 py-3.5 border-b border-white/10 bg-zinc-900/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-lime-600 to-teal-400 flex items-center justify-center text-white shadow-md">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-600 to-teal-400 flex items-center justify-center text-white shadow-md">
                     <Bot className="w-5 h-5" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-lime-500 border-2 border-zinc-900"></span>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-zinc-900"></span>
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h3 className="text-sm font-semibold text-white tracking-tight">Jhei</h3>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-lime-500/20 text-lime-300 font-mono">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-mono">
                       AI
                     </span>
                   </div>
@@ -360,7 +360,7 @@ export default function JheiChat() {
 
             {/* Security Guardrail Badge Banner */}
             <div className="px-3.5 py-1.5 bg-zinc-900/40 border-b border-white/5 flex items-center gap-2 text-[11px] text-zinc-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+              <ShieldCheck className="w-3.5 h-3.5 text-red-400 shrink-0" />
               <span className="truncate">Grounded knowledge with security & PII guardrails</span>
             </div>
 
@@ -373,7 +373,7 @@ export default function JheiChat() {
                 >
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed shadow-sm ${msg.role === 'user'
-                      ? 'bg-lime-600 text-white rounded-br-none'
+                      ? 'bg-red-600 text-white rounded-br-none'
                       : 'bg-zinc-900/80 text-zinc-200 border border-white/10 rounded-bl-none'
                       }`}
                   >
@@ -386,9 +386,9 @@ export default function JheiChat() {
               {isLoading && (
                 <div className="flex items-start gap-2">
                   <div className="bg-zinc-900/80 border border-white/10 rounded-2xl rounded-bl-none px-4 py-3 text-zinc-400 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-lime-400 animate-bounce"></span>
-                    <span className="w-2 h-2 rounded-full bg-lime-400 animate-bounce [animation-delay:0.2s]"></span>
-                    <span className="w-2 h-2 rounded-full bg-lime-400 animate-bounce [animation-delay:0.4s]"></span>
+                    <span className="w-2 h-2 rounded-full bg-red-400 animate-bounce"></span>
+                    <span className="w-2 h-2 rounded-full bg-red-400 animate-bounce [animation-delay:0.2s]"></span>
+                    <span className="w-2 h-2 rounded-full bg-red-400 animate-bounce [animation-delay:0.4s]"></span>
                   </div>
                 </div>
               )}
@@ -434,7 +434,7 @@ export default function JheiChat() {
                   maxLength={350}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about skills, experience, or contact..."
-                  className="w-full bg-zinc-900/90 border border-white/10 rounded-xl pl-3.5 pr-20 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-lime-500/60 transition-colors"
+                  className="w-full bg-zinc-900/90 border border-white/10 rounded-xl pl-3.5 pr-20 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500/60 transition-colors"
                   disabled={isLoading}
                 />
                 <div className="absolute right-2 flex items-center gap-1.5">
@@ -444,7 +444,7 @@ export default function JheiChat() {
                   <button
                     type="submit"
                     disabled={!input.trim() || isLoading}
-                    className="p-1.5 rounded-lg bg-lime-600 hover:bg-lime-500 text-white disabled:opacity-40 disabled:hover:bg-lime-600 transition-colors"
+                    className="p-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white disabled:opacity-40 disabled:hover:bg-red-600 transition-colors"
                     aria-label="Send message"
                   >
                     <Send className="w-3.5 h-3.5" />
