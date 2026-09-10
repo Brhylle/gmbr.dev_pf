@@ -327,7 +327,7 @@ export default function JheiChat() {
                   <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-600 to-orange-400 flex items-center justify-center text-white shadow-md">
                     <Bot className="w-5 h-5" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-zinc-900"></span>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-zinc-900"></span>
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
