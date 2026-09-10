@@ -324,7 +324,7 @@ export default function JheiChat() {
             <div className="px-4 py-3.5 border-b border-white/10 bg-zinc-900/60 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-600 to-teal-400 flex items-center justify-center text-white shadow-md">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-red-600 to-orange-400 flex items-center justify-center text-white shadow-md">
                     <Bot className="w-5 h-5" />
                   </div>
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-zinc-900"></span>
@@ -360,7 +360,7 @@ export default function JheiChat() {
 
             {/* Security Guardrail Badge Banner */}
             <div className="px-3.5 py-1.5 bg-zinc-900/40 border-b border-white/5 flex items-center gap-2 text-[11px] text-zinc-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-red-400 shrink-0" />
+              <ShieldCheck className="w-3.5 h-3.5 text-zinc-50 shrink-0" />
               <span className="truncate">Grounded knowledge with security & PII guardrails</span>
             </div>
 
