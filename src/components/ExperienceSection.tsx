@@ -2,10 +2,17 @@ import { motion } from "motion/react";
 import { DottedGlowBackground } from "./ui/dotted-glow-background";
 
 const experiences = [
-    {
+  {
+    title: "Data Annotator / Narrator",
+    company: "Physical Intelligence",
+    period: "September 2026 - Present",
+    description: "- Coming soon...",
+    technologies: ["Coming soon..."],
+  },
+  {
     title: "Customer Service Representative",
     company: "IntouchCX",
-    period: "February 2026 - Present",
+    period: "February 2026 - September 2026",
     description:
       `- I handled over 2,100 customer interactions while maintaining a 94% first-call resolution rate, a 4.75 customer satisfaction score, a 4.7 ease-of-handling rating, and an average handling time of 491 seconds during mentorship with supervisor. \n - Out of 25 colleagues who've asked for help with their network issues, I was able to troubleshoot and resolve 23 of them, resulting in a 92% success rate in providing effective solutions and ensuring uninterrupted connectivity for my colleagues.`,
     technologies: ["Appointment Scheduling", "MS-DOS Based System", "Keyboard Navigation"],
@@ -22,7 +29,7 @@ const experiences = [
       Customer Service Advisor on a travel account. \n - Out of 25 colleagues who've asked for help with their network issues, I was able to troubleshoot and resolve 23 of them, resulting in a 92% success rate in providing effective solutions and ensuring uninterrupted connectivity for my colleagues.`,
     technologies: ["Empathy", "Soft Skills", "Language Frameworks", "Problem Solving"],
   },
-    {
+  {
     title: "Associate Project Lead",
     company: "RTU Boni Campus - MISO",
     period: "March 2025 - May 2025",
@@ -48,7 +55,7 @@ export default function ExperienceSection() {
             I have helped a variety of customers, users and even colleagues in a professional industry, may it be <b>virtually</b> or <b>in-person</b>!
           </p>
         </motion.div>
-        
+
         <div className="space-y-12">
           {experiences.map((exp, index) => (
             <motion.div
@@ -60,14 +67,14 @@ export default function ExperienceSection() {
               className="relative border-l-2 border-foreground/20 pl-8"
             >
               <div className="absolute -left-2 top-0 h-4 w-4 rounded-full border-2 border-foreground bg-background" />
-              
+
               <div className="font-mono text-sm text-muted-foreground">
                 {exp.period}
               </div>
               <h3 className="mt-1 text-xl font-semibold">{exp.title}</h3>
               <div className="text-sm text-muted-foreground">{exp.company}</div>
               <p className="mt-3 text-muted-foreground">{exp.description}</p>
-              
+
               <div className="mt-4 flex flex-wrap gap-2">
                 {exp.technologies.map((tech) => (
                   <span
