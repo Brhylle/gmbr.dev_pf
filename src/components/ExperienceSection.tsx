@@ -6,8 +6,8 @@ const experiences = [
     title: "Data Annotator / Narrator",
     company: "Physical Intelligence",
     period: "September 2026 - Present",
-    description: "- Coming soon...",
-    technologies: ["Coming soon..."],
+    description: "- Annotate and narrate multi-viewpoint robotic teleoperation datasets to train Vision-Language-Action (VLA) models using frame-accurate temporal segmentation (mm:ss:ms). Implemented a 15-minute micro-pacing and forecasting workflow that boosted hourly output by ~60%—scaling from 28–33 to 46–52 markers/hr (surpassing the 40/hr target) while maintaining top-tier (93.34%) QA and attendance benchmarks.",
+    technologies: ["Slack", "Multi-POV Camera Feed Analysis", "AI Ops", "Human-in-the-Loop QA", "Temporal Video Annotation", "Robotic Teleoperation"],
   },
   {
     title: "Customer Service Representative",
